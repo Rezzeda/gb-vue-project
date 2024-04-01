@@ -1,0 +1,72 @@
+.post {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 150px;
+
+    &__container {
+        background-color: $bg-color;
+        border: 1px solid $border-color;
+        border-radius: 50px;
+        width: 1200px;
+        min-height: 521px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__img-container {
+        padding: 21px;
+        // position: relative;
+    }
+    &__card-img {
+        display: block;
+        background-color: $bg-color;
+        border-radius: 50px;
+        width: 569px;
+        height: 478px;
+    }
+
+    &__card-container {
+        box-sizing: border-box;
+        padding: 0 21px 37.73px 21px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 190px;
+    }
+
+    &__cont {
+        padding: 21px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__card-title {
+        max-width: 463px;
+        font-family: $headers-font;
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 31.25px;
+        margin-bottom: 22px;
+    }
+
+    &__card-text {
+        max-width: 463px;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 33px;
+        margin-bottom: 22px;
+        color: $text-color-light;
+    }
+
+    &__card-button {
+        width: 52px;
+        height: 52px;
+        background-color: $bg-color-accent;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}

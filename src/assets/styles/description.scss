@@ -1,0 +1,40 @@
+.description{
+    display: flex;
+    justify-content: center;
+    padding-top: 57px;
+    padding-bottom: 93px;
+
+    &__container {
+        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 8px;
+        max-width: 737px;
+        text-align: center;
+    }
+
+    &__title {
+        font-family: $headers-font;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 125%;
+    }
+
+    &__subtitle {
+        font-family: $main-font;
+        color: $text-color-light;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 150%;
+    }
+    
+    &__text {
+        font-family: $main-font;
+        color: $text-color-light;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 33px;
+    }
+}

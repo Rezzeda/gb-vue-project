@@ -1,0 +1,28 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    justify-content: center;
+    margin-top: 51px;
+
+    &__button {
+        width: 52px;
+        height: 52px;
+        background-color: $bg-color;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        border: 1px solid $accent-color;
+    }
+
+    &__button:hover {
+        background-color: $bg-color-accent;
+    }
+
+    .page_active{
+        background-color: $bg-color-accent;
+    }
+}

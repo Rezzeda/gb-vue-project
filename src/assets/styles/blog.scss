@@ -1,0 +1,104 @@
+.blog {
+    max-width: 1200px;
+    font-family: $main-font;
+
+
+    &__cards {
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(382px, 1fr));
+        gap: 27px;
+    }
+
+    &__title {
+        font-family: $headers-font;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 125%;
+        margin-bottom: 30px;
+    }
+
+    &__img-container {
+        padding: 21px;
+        position: relative;
+    }
+
+    &__card {
+        background-color: $bg-color;
+        border: 1px solid $border-color;
+        border-radius: 50px;
+        width: 382px;
+        height: 521px;
+
+        &:hover {
+            background-color: $bg-color-accent;
+            .blog__card-button {
+                background-color: $bg-color;
+            }
+        }
+    }
+
+    &__card-type {
+        position: absolute;
+        bottom: 42px;
+        left: 42px;
+        background-color: $bg-color;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        color: $text-color-light;
+        padding: 10px;
+        font-size: 16px; 
+    }
+
+    &__card-title {
+        height: 70px;
+        max-width: 305px;
+        font-family: $headers-font;
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 31.25px;
+        padding: 0 21px 0 21px;
+    }
+
+    &__card-img {
+        display: block;
+        background-color: $bg-color;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+        width: 340px;
+        height: 289.27px;
+    }
+
+    &__cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__card-container {
+        box-sizing: border-box;
+        padding: 0 21px 37.73px 21px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 190px;
+    }
+
+    &__card-button {
+        width: 52px;
+        height: 52px;
+        background-color: $bg-color-accent;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    &__card-date {
+        color: $text-color-light;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+    }
+}

@@ -1,0 +1,59 @@
+.intro {
+
+    position: relative;
+    background-image: url(../images/intro-img1.png);
+    max-width: 1200px;
+    height: 758px;
+    border-radius: 50px;
+
+    &__container {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding-left: 51px;
+    }
+
+    &__title {
+        max-width: 464px;
+        font-family: $headers-font;
+        font-size: 65px;
+        font-weight: 400;
+        line-height: 125%;
+        margin-bottom: 18px;
+    }
+
+    &__subtitle {
+        max-width: 464px;
+        font-family: $main-font;
+        color: $text-color-light;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 150%;
+    }
+
+    &__button {
+        margin-top: 21px;
+        display: flex;
+        column-gap: 10px;
+        width: 220.14px;
+        height: 75px;   
+        justify-content: center;
+        align-items: center;
+        padding: 26px 49px 26px 48px;
+        border-radius: 5px;
+        border-radius: 18px;
+        box-shadow: 0px 10px 20px 0px rgba(192, 192, 192, 0.35);
+        background-color: rgb(41, 47, 54);
+        cursor: pointer;
+    }
+
+    &__button-text {
+        min-width: 98px;
+        font-family: $main-font;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 125%;
+        text-decoration: none;
+        color: $bg-color;
+    }
+}

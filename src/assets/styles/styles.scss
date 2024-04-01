@@ -1,0 +1,35 @@
+@import 'fonts.scss';
+@import 'variables.scss';
+@import 'header.scss';
+@import 'intro';
+@import 'description';
+@import 'gallery';
+@import 'numbers';
+@import 'blog';
+@import 'footer';
+@import 'pagination';
+@import 'post';
+@import 'overlay';
+@import 'full-post';
+@import 'navigation';
+@import 'tags';
+
+*, html, body {
+    margin: $default-margin;
+    padding: $default-padding;
+}
+
+.body {
+    font-family: $main-font;
+    background-color: $bg-color;
+    padding-top: 53px;
+    padding-bottom: 134px;
+}
+
+link, button, input {
+    font-family: $main-font;
+}
+
+.centered {
+    margin: 0 auto;
+}
