@@ -3,8 +3,9 @@
     <AppHeader />
     <!-- <HomePage /> -->
     <!-- <BlogPage /> -->
-    <ProductDetails />
-    <BlogDetailsPage />
+    <!-- <ProductDetails /> -->
+    <!-- <BlogDetailsPage /> -->
+    <ProjectPage />
     <AppFooter />
   </div>
 </template>
@@ -14,16 +15,18 @@ import AppHeader from './components/AppHeader.vue'
 import AppFooter from './components/AppFooter.vue'
 // import HomePage from './components/HomePage.vue'
 // import BlogPage from './components/BlogPage.vue'
-import ProductDetails from './components/ProductDetails.vue'
-import BlogDetailsPage from './components/BlogDetailsPage.vue'
+// import ProductDetails from './components/ProductDetails.vue'//тут задание 2 к уроку 10
+// import BlogDetailsPage from './components/BlogDetailsPage.vue'
+import ProjectPage from './components/ProjectPage.vue'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
     AppFooter,
-    BlogDetailsPage,
-    ProductDetails
+    // BlogDetailsPage
+    ProjectPage
+    // ProductDetails
     // HomePage
     // BlogPage
   }

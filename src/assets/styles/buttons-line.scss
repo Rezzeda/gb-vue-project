@@ -1,0 +1,25 @@
+.buttons-line {
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: black;
+
+    &__container {
+        background-color: transparent;
+        border: 1px solid $accent-color;
+        border-radius: 18px;
+    }
+
+    &__button {
+        background-color: transparent;
+        border: none;
+        padding: 26px 61px;
+        border-radius: 18px;
+        &_active {
+            background-color: $accent-color;
+            border-radius: 18px;
+            color: $bg-color
+        }
+    }
+}
