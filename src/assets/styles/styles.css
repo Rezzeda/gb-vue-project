@@ -746,6 +746,125 @@
   color: #FFFFFF;
 }
 
+.container {
+  max-width: 1200px;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0px auto;
+  padding: 50px;
+}
+
+.carousel {
+  width: 1200px;
+  height: 800px;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background-color: black;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 20px 5px;
+  color: currentColor;
+  font-size: 2rem;
+}
+
+button span {
+  position: relative;
+  display: inline-block;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.previous:hover span {
+  transform: translateX(-10px) scale(1.2);
+  align-self: flex-end;
+}
+
+.next:hover span {
+  transform: translateX(10px) scale(1.2);
+}
+
+.slider-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.slider-nav li {
+  display: flex;
+  text-align: center;
+}
+
+.img {
+  border-radius: 50px;
+  box-shadow: 10px 10px 20px 0 rgba(94, 47, 59, 0.2);
+  width: 1200px;
+  height: 800px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 100;
+}
+
+img.active {
+  display: block;
+  animation: fadeImg 0.8s;
+}
+@keyframes fadeImg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.project-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.project-details__container {
+  width: 658px;
+}
+.project-details__title {
+  font-family: "DM Serif Display", serif;
+  font-size: 50px;
+  font-weight: 400;
+}
+.project-details__text {
+  font-family: "Jost", sans-serif;
+  color: #4D5053;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
 *, html, body {
   margin: 0;
   padding: 0;

@@ -5,7 +5,8 @@
     <!-- <BlogPage /> -->
     <!-- <ProductDetails /> -->
     <!-- <BlogDetailsPage /> -->
-    <ProjectPage />
+    <!-- <ProjectPage /> -->
+    <ProjectDetails />
     <AppFooter />
   </div>
 </template>
@@ -17,7 +18,8 @@ import AppFooter from './components/AppFooter.vue'
 // import BlogPage from './components/BlogPage.vue'
 // import ProductDetails from './components/ProductDetails.vue'//тут задание 2 к уроку 10
 // import BlogDetailsPage from './components/BlogDetailsPage.vue'
-import ProjectPage from './components/ProjectPage.vue'
+// import ProjectPage from './components/ProjectPage.vue'
+import ProjectDetails from './components/ProjectDetails.vue'
 
 export default {
   name: 'App',
@@ -25,10 +27,11 @@ export default {
     AppHeader,
     AppFooter,
     // BlogDetailsPage
-    ProjectPage
+    // ProjectPage
     // ProductDetails
     // HomePage
     // BlogPage
+    ProjectDetails
   }
 }
 </script>
