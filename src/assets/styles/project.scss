@@ -29,4 +29,9 @@
         top: 0;
         right: 0;
     }
+
+    &__link {
+        text-decoration: none;
+        color: currentColor;
+    }
 }

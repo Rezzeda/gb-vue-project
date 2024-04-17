@@ -1,18 +1,18 @@
 <template>
     <header class="header centered">
-    <div class="header__container-left">
+    <router-link to="./home" class="header__container-left">
     <img class="logo header__logo" src="../assets/images/Logo.svg" alt="logo">
-    </div>
+    </router-link>
     <nav class="header__menu">
         <ul class="header__menu-list">
         <li class="header__menu-list-item">
-            <a class="header__menu-list-item-link" href="#">Home</a>
+            <router-link class="header__menu-list-item-link" to="/home">Home</router-link>
         </li>
         <li class="header__menu-list-item">
-                    <a class="header__menu-list-item-link" href="#">Project</a>
+                    <router-link class="header__menu-list-item-link" to="/project">Project</router-link>
                 </li>
                 <li class="header__menu-list-item">
-                    <a class="header__menu-list-item-link" href="#">Blog</a>
+                    <router-link class="header__menu-list-item-link" to="/blog">Blog</router-link>
                 </li>
             </ul>
         </nav>

@@ -1,46 +1,35 @@
 <template>
     <div>
         <OverlayComponent :title="overlay[0].title" :text="overlay[0].text" :image="overlay[0].image" />
-        <section id="post" class="post">
-            <article class="post__container" aria-label="latest post">
-                <figure class="post__img-container">
-                    <img class="post__card-img" :src="latestPost.image" :alt="latestPost.title">
-                </figure>
-                <div class="post__cont">
-                    <h3 class="post__card-title">{{ latestPost.title }}</h3>
-                    <p class="post__card-text">{{ latestPost.text }}</p>
-                    <div class="post__card-container">
-                        <p class="post__card-date">{{ latestPost.date }}</p>
-                        <button class="post__card-button" type="button">
-                            <img src="../assets/images/project-arrow.svg" alt="next-arrow">
-                        </button>
-                    </div>
-                </div>
-            </article>
+        <section class="buttons-line centered">
+            <div class="buttons-line__container centered">
+                <button class="buttons-line__button" :class="{ 'buttons-line__button_active': activeButton === item.id }" @click="changeActiveButton(item.id)" v-for="item in uniqueButtons" :key="item.id">{{ item.name_button }}</button>
+            </div>
         </section>
-        <section id="blog" class="blog centered">
-            <h2 class="blog__title">Articles & News</h2>
-            <ul id="blog__cards" class="blog__cards">
-                <li class="blog__card" v-for="(post, index) in displayedPosts" :key="index">
-                    <article aria-label="post">
-                        <figure class="blog__img-container">
-                            <img class="blog__card-img" :src="post.image" :alt="post.title">
-                            <figcaption class="blog__card-type">{{ post.category }}</figcaption>
-                        </figure>
-                        <div class="blog__cont">
-                            <h3 class="blog__card-title">{{ post.title }}</h3>
-                            <div class="blog__card-container">
-                                <p class="blog__card-date">{{ post.date }}</p>
-                                <button class="blog__card-button" type="button">
-                                    <img src="../assets/images/project-arrow.svg" alt="next-arrow">
-                                </button>
-                            </div>
-                        </div>
+        <section class="projects centered" id="projects centered">
+            <ul class="projects__container">
+                  <li class="projects__card" v-for="(post, index) in displayedPosts" :key="index">
+                  <router-link  class="projects__link" :to="'/project/' + post.id">
+                    <article aria-label="project">
+                      <div class="projects__image">
+                        <img class="projects__img" :src="post.image" :alt="post.title" />
+                        <img class="projects__favorite" src="../assets/images/icon-star.svg" alt="favorite star">
+                      </div>
+                      <div class="blog__cont">
+                              <h3 class="blog__card-title">{{ post.title }}</h3>
+                              <div class="blog__card-container">
+                                  <p class="blog__card-date">{{ post.date }}</p>
+
+                                    <button class="blog__card-button" type="button">
+                                      <img src="../assets/images/project-arrow.svg" alt="next-arrow">
+                                    </button>
+                              </div>
+                          </div>
                     </article>
+                  </router-link>
                 </li>
             </ul>
             <div class="pagination">
-                <!-- <button @click="prevPage" :disabled="currentPage === 1">Prev</button> -->
                 <button class="pagination__button" v-for="pageNumber in totalPages" :key="pageNumber" @click="goToPage(pageNumber)" :class="{page_active: pageNumber === currentPage}">{{ formattedPageNumber(pageNumber) }}</button>
                 <button class="pagination__button" @click="nextPage" :disabled="currentPage === totalPages">
                     <img src="../assets/images/project-arrow.svg" alt="next-arrow">
@@ -51,10 +40,10 @@
 </template>
 
 <script>
-import OverlayComponent from './OverlayComponent.vue'
+import OverlayComponent from '../components/OverlayComponent.vue'
 
 export default {
-  name: 'BlogPage',
+  name: 'ProjectPage',
   components: {
     OverlayComponent
   },
@@ -62,13 +51,15 @@ export default {
     return {
       overlay: [
         {
-          title: 'Articles & News',
-          text: 'Home / Blog',
-          image: require('@/assets/images/articles-bg.png')
+          title: 'Our Project',
+          text: 'Home / Project',
+          image: require('@/assets/images/project-page-bg.png')
         }
       ],
       posts: [
         {
+          id: 'project123',
+          button: 'Kitchen',
           title: 'Let’s Get Solution For Building Construction Work',
           category: 'Kitchen Design',
           date: '26 December, 2022',
@@ -76,14 +67,17 @@ export default {
           text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
         },
         {
+          id: '2',
+          button: 'Living Area',
           title: 'Low Cost Latest Invented Interior Designing Ideas.',
           category: 'Living Design',
           date: '22 December, 2022',
           image: require('@/assets/images/project2.png'),
           text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
-
         },
         {
+          id: '3',
+          button: 'BedRoom',
           title: 'Best For Any Office & Business Interior Solution',
           category: 'Interior Design',
           date: '25 December, 2022',
@@ -91,48 +85,17 @@ export default {
           text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
         },
         {
-          title: 'Let’s Get Solution For Building Construction Work',
-          category: 'Kitchen Design',
-          date: '15 December, 2022',
-          image: require('@/assets/images/project1.png'),
-          text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
-        },
-        {
-          title: 'Low Cost Latest Invented Interior Designing Ideas.',
-          category: 'Living Design',
-          date: '14 December, 2022',
-          image: require('@/assets/images/project2.png'),
-          text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
-        },
-        {
+          id: '4',
+          button: 'Bathroom',
           title: 'Best For Any Office & Business Interior Solution',
           category: 'Interior Design',
-          date: '13 December, 2022',
+          date: '25 December, 2022',
           image: require('@/assets/images/project3.png'),
           text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
         },
         {
-          title: 'Let’s Get Solution For Building Construction Work',
-          category: 'Kitchen Design',
-          date: '12 December, 2022',
-          image: require('@/assets/images/project1.png'),
-          text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
-        },
-        {
-          title: 'Let’s Get Solution For Building Construction Work',
-          category: 'Kitchen Design',
-          date: '11 December, 2022',
-          image: require('@/assets/images/project2.png'),
-          text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
-        },
-        {
-          title: 'Let’s Get Solution For Building Construction Work',
-          category: 'Kitchen Design',
-          date: '10 December, 2022',
-          image: require('@/assets/images/project1.png'),
-          text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
-        },
-        {
+          id: '5',
+          button: 'Kitchen',
           title: 'Let’s Get Solution For Building Construction Work',
           category: 'Kitchen Design',
           date: '26 December, 2022',
@@ -140,90 +103,111 @@ export default {
           text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
         },
         {
+          id: '6',
+          button: 'Living Area',
           title: 'Low Cost Latest Invented Interior Designing Ideas.',
           category: 'Living Design',
-          date: '09 December, 2022',
+          date: '22 December, 2022',
           image: require('@/assets/images/project2.png'),
           text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
         },
         {
+          id: '7',
+          button: 'BedRoom',
           title: 'Best For Any Office & Business Interior Solution',
           category: 'Interior Design',
-          date: '08 December, 2022',
-          image: require('@/assets/images/project1.png'),
-          text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
-        },
-        {
-          title: 'Let’s Get Solution For Building Construction Work',
-          category: 'Kitchen Design',
-          date: '07 December, 2022',
-          image: require('@/assets/images/project1.png'),
-          text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
-        },
-        {
-          title: 'Low Cost Latest Invented Interior Designing Ideas.',
-          category: 'Living Design',
-          date: '06 December, 2022',
-          image: require('@/assets/images/project2.png'),
-          text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
-        },
-        {
-          title: 'Best For Any Office & Business Interior Solution',
-          category: 'Interior Design',
-          date: '05 December, 2022',
+          date: '25 December, 2022',
           image: require('@/assets/images/project3.png'),
           text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
         },
         {
+          id: '8',
+          button: 'Bathroom',
+          title: 'Best For Any Office & Business Interior Solution',
+          category: 'Interior Design',
+          date: '25 December, 2022',
+          image: require('@/assets/images/project3.png'),
+          text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
+        },
+        {
+          id: '9',
+          button: 'Kitchen',
           title: 'Let’s Get Solution For Building Construction Work',
           category: 'Kitchen Design',
-          date: '04 December, 2022',
+          date: '26 December, 2022',
           image: require('@/assets/images/project1.png'),
           text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
         },
         {
+          id: '10',
+          button: 'Kitchen',
           title: 'Let’s Get Solution For Building Construction Work',
           category: 'Kitchen Design',
-          date: '03 December, 2022',
+          date: '26 December, 2022',
           image: require('@/assets/images/project1.png'),
           text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
         },
         {
+          id: '11',
+          button: 'Kitchen',
           title: 'Let’s Get Solution For Building Construction Work',
           category: 'Kitchen Design',
-          date: '02 December, 2022',
+          date: '26 December, 2022',
           image: require('@/assets/images/project1.png'),
           text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
         },
         {
+          id: '12',
+          button: 'Kitchen',
           title: 'Let’s Get Solution For Building Construction Work',
           category: 'Kitchen Design',
-          date: '01 December, 2022',
+          date: '26 December, 2022',
           image: require('@/assets/images/project1.png'),
+          text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
+        },
+        {
+          id: '13',
+          button: 'Kitchen',
+          title: 'Let’s Get Solution For Building Construction Work',
+          category: 'Kitchen Design',
+          date: '26 December, 2022',
+          image: require('@/assets/images/project1.png'),
+          text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
+        },
+        {
+          id: '14',
+          button: 'Kitchen',
+          title: 'Let’s Get Solution For Building Construction Work',
+          category: 'Kitchen Design',
+          date: '26 December, 2022',
+          image: require('@/assets/images/project-img-1.png'),
           text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat illum molestias blanditiis nesciunt iste eveniet explicabo et autem tempore magnam velit quidem ullam, voluptate dolores sed doloribus incidunt, expedita placeat ipsam perspiciatis consequuntur reprehenderit aut!'
         }
       ],
-      perPage: 6,
-      currentPage: 1
+      perPage: 4,
+      currentPage: 1,
+      activeButton: 'Kitchen'
     }
   },
   computed: {
     totalPages () {
-      return Math.ceil(this.posts.length / this.perPage)
+      return Math.max(Math.ceil(this.filteredPosts.length / this.perPage), 1)
+    },
+    filteredPosts () {
+      return this.posts.filter(post => post.button === this.activeButton)
     },
     displayedPosts () {
       const startIndex = (this.currentPage - 1) * this.perPage
       const endIndex = startIndex + this.perPage
-      return this.posts.slice(startIndex, endIndex)
+      const filteredPosts = this.posts.filter(post => post.button === this.activeButton)
+      return filteredPosts.slice(startIndex, endIndex)
     },
-    // latestPost() {
-    // return this.posts.length > 0 ? this.posts[this.posts.length - 1] : null;
-    // },
-    latestPost () {
-      const sortedPosts = this.posts.slice().sort((a, b) => {
-        return new Date(b.date) - new Date(a.date)
-      })
-      return sortedPosts.length > 0 ? sortedPosts[0] : null
+    uniqueButtons () {
+      // уникальные значения кнопок из массива постов
+      return [...new Set(this.posts.map(post => post.button))].map(button => ({
+        id: button,
+        name_button: button
+      }))
     }
   },
   methods: {
@@ -246,6 +230,11 @@ export default {
       } else {
         return pageNumber
       }
+    },
+    changeActiveButton (button) {
+      console.log('Changing active button to:', button)
+      this.activeButton = button
+      this.currentPage = 1
     }
   }
 }

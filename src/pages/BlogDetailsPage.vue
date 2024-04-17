@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import OverlayComponent from './OverlayComponent.vue'
+import OverlayComponent from '../components/OverlayComponent.vue'
 
 export default {
   name: 'BlogDetailsPage',

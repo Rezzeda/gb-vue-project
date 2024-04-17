@@ -22,9 +22,9 @@
             <nav class="footer__column footer__navigation">
                 <h4 class="footer__nav-title">Pages</h4>
                 <ul class="footer__navigation-list">
-                    <li><a href="#" class="footer__link">Home</a></li>
-                    <li><a href="#" class="footer__link">Project</a></li>
-                    <li><a href="#" class="footer__link">Blog</a></li>
+                    <li><router-link to="/home" class="footer__link">Home</router-link></li>
+                    <li><router-link to="/project" class="footer__link">Project</router-link></li>
+                    <li><router-link to="/blog" class="footer__link">Blog</router-link></li>
                 </ul>
             </nav>
             <div class="footer__column footer__address">

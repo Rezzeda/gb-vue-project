@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import CarouselComponent from './CarouselComponent.vue'
+import CarouselComponent from '../components/CarouselComponent.vue'
 import { mapState } from 'vuex'
 
 export default {

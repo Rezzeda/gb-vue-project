@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import IntroBox from './IntroBox.vue'
-import DescriptionComponent from './DescriptionComponent.vue'
-import BlogComponent from './BlogComponent.vue'
-import GalleryComponent from './GalleryComponent.vue'
-import NumbersComponent from './NumbersComponent.vue'
+import IntroBox from '../components/IntroBox.vue'
+import DescriptionComponent from '../components/DescriptionComponent.vue'
+import BlogComponent from '../components/BlogComponent.vue'
+import GalleryComponent from '../components/GalleryComponent.vue'
+import NumbersComponent from '../components/NumbersComponent.vue'
 
 export default {
   name: 'HomePage',

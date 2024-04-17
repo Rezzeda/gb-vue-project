@@ -486,6 +486,10 @@
   border-radius: 50%;
   cursor: pointer;
 }
+.post__link {
+  text-decoration: none;
+  color: #4D5053;
+}
 
 .overlay {
   margin-bottom: 200px;
@@ -722,6 +726,10 @@
   top: 0;
   right: 0;
 }
+.projects__link {
+  text-decoration: none;
+  color: currentColor;
+}
 
 .buttons-line {
   width: 1200px;
@@ -863,6 +871,25 @@ img.active {
   font-size: 22px;
   font-weight: 400;
   margin-bottom: 25px;
+}
+
+.not-found__container {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.not-found__text {
+  font-family: "Jost", sans-serif;
+  font-size: 50px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.not-found__err {
+  font-family: "DM Serif Display", serif;
+  font-size: 150px;
+  font-weight: 400;
 }
 
 *, html, body {
