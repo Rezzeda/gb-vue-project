@@ -1,5 +1,7 @@
 # vue-interior-design-website
 
+Учебный проект для ознакомления с Vue.js
+
 ## Project setup
 ```
 npm install
